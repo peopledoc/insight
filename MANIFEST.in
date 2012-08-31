@@ -1,0 +1,5 @@
+recursive-include insight *
+global-exclude *.pyc
+include *.txt
+include *.rst
+include VERSION README

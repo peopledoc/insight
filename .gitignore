@@ -1,0 +1,24 @@
+# Distribution package
+/dist/
+
+# Virtualenv
+/env/
+/build/
+
+# Python files.
+*.pyc
+*.pyo
+*.egg-info
+*~
+
+# Compiled gettext catalogs.
+*.mo
+
+# Editors' temporary files
+.*.swp
+
+# Test reports.
+.coverage
+nosetests.xml
+.noseids
+coverage.xml
