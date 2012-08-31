@@ -35,6 +35,8 @@ setup(name=name,
       namespace_packages=namespace_packages,
       include_package_data=True,
       install_requires=['setuptools',
+                        'Flask',
+                        'redis',
                         'requests',
                        ],
       entry_points={

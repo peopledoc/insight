@@ -1,0 +1,51 @@
+#######
+INSTALL
+#######
+
+Installing insight
+==================
+
+Install thumbnailer::
+
+	$ git clone https://github.com/Natim/Thumbnailer.git
+
+    $ cd Thumbnailer/src/thumbnailer.core
+    $ python setup.py develop
+
+    $ cd Thumbnailer/src/thumbnailer.engine.documents
+    $ python setup.py develop
+
+    $ git clone https://github.com/anderser/pydocsplit.git
+	$ cd pydocsplit
+	$ git checkout dev
+	$ python setup.py develop
+
+Install insight::
+
+   $ git clone https://github.com/novagile/insight.git
+   $ python setup.py develop
+
+Install docsplit::
+
+   $ sudo aptitude install rubygems graphicsmagick poppler-utils pdftk
+   $ gem install docsplit
+
+Install redis::
+
+   $ sudo aptitude install redis-server
+
+Install gunicorn::
+
+   $ pip install gunicorn
+
+Running insight
+===============
+
+Launch an insight worker::
+
+    $ insight
+
+
+Launch the REST API::
+
+    $ gunicorn -w 4 insight.api:app

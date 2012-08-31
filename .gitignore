@@ -4,6 +4,7 @@
 # Virtualenv
 /env/
 /build/
+/var/
 
 # Python files.
 *.pyc
