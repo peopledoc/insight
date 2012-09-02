@@ -4,6 +4,6 @@ Insight
 
 This project contains :
 
- - A WSGI app that handle preview requests and use a Kombu producer that queue requests on RabbitMQ.
- - A docsplit worker that takes a document and generate its thumbnails use a Kombu consumer to consume requests.
+ - A WSGI app that handle preview sync and async requests and use redis to queue asynchroneous requests
+ - A docsplit worker that consume requests in redis, takes a document and generate its thumbnails.
  - At the end, the worker call a callback_url to indicate some preview informations.
