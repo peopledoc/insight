@@ -5,6 +5,7 @@
 /env/
 /build/
 /var/
+/data/
 
 # Python files.
 *.pyc

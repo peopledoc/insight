@@ -1,20 +1,15 @@
-Flask==0.8
+Flask==0.9
 Jinja2==2.6
-Logbook==0.3
 Werkzeug==0.8.3
 argparse==1.2.1
-certifi==0.0.8
-chardet==1.1
+circus==0.5.2
 distribute==0.6.24
--e git+git@github.com:novagile/insight.git@f3ad4dea99a31fb3385b4a381daec9d40e61a8fb#egg=insight-dev
+gunicorn==0.14.6
+-e git+git@github.com:novagile/insight.git@9a6876f229b9345ccca3e35eb81154a26074ba2b#egg=insight-dev
+iowait==0.1
+psutil==0.6.1
 -e git://github.com/anderser/pydocsplit.git@0d0fc96d4637c80c98f07cd856e958d862b7b798#egg=pydocsplit-dev
-python-dateutil==2.1
-pytz==2012d
+pyzmq==2.2.0.1
 redis==2.6.2
-requests==0.11.1
-rq==0.3.1
-six==1.2.0
-thumbnailer.core==0.1dev-
-thumbnailer.engines.documents==0.1dev-
-times==0.5
+requests==0.14.0
 wsgiref==0.1.2

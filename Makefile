@@ -2,13 +2,7 @@ VIRTUALENV = virtualenv
 PYTHON = env/bin/python
 
 virtualenv:
-	if [ ! -f $(PYTHON) ]; then \
-            if [[ "`$(VIRTUALENV) --version`" < "`echo '1.8'`" ]]; then \
-                $(VIRTUALENV) --no-site-packages --distribute env; \
-            else \
-                $(VIRTUALENV) env; \
-            fi \
-        fi
+	$(VIRTUALENV) env
 
 clean:
 	find . -name '*.pyc' -delete
@@ -22,8 +16,11 @@ realclean: distclean
 requirements:
 	env/bin/pip freeze > etc/versions-kgs.txt
 
-develop: virtualenv update
+develop: virtualenv
 	env/bin/python setup.py develop
 
-update:
-	env/bin/pip install -r etc/requirements.txt
+runserver:
+	env/bin/gunicorn -w3 insight.api:app	
+
+launch_workers:
+	circusd etc/circus_config.ini
