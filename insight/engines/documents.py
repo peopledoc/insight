@@ -46,14 +46,11 @@ def extract_image(file_obj, **kwargs):
         m = re.search('_(\d+)\.png$', page_png)
         page_number = int(m.group(1))
         params['page'] = page_number
-        print params
         page_cache_file_path = get_thumb_path_for_kwargs(**params)
         cache_file = open(page_cache_file_path, 'w')
         with open(page_png, 'r') as f:
             cache_file.write(f.read())
         cache_file.close()
-        # print page_cache_file_path, params['page']
-    print len(pngs)
         
     remove_list = pngs
     for remove_file in remove_list:

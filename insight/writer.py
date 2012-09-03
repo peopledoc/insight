@@ -21,7 +21,6 @@ def get_thumb_path_for_kwargs(**kwargs):
         params[key] = kwargs[key]
     dumps = pickle.dumps(params)
     hash_id = hashlib.sha256(pickle.dumps(params)).hexdigest()
-    print dumps, hash_id
     return os.path.join(THUMB_CACHE_DIR, hash_id)
 
 def get_thumb_from_cache(**kwargs):

@@ -69,7 +69,6 @@ def resize(engine):
 
     # If needed we call the engine
     if not (have_cache_for_kwargs(**params) and is_from_cache):
-        print "CACHE STATUS", is_from_cache, have_cache_for_kwargs(**params), get_thumb_path_for_kwargs(**params)
         num_pages = INSIGHT_ENGINE[engine](file_obj, **params) or None
 
     # Get the thumb

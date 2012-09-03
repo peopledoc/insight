@@ -49,7 +49,6 @@ def main():
             file_obj.seek(0)
 
         if 'callback' in params:
-            print params['callback']
             try:
                 requests.post(params['callback'], data=params)
             except:
