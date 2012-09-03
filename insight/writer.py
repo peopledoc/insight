@@ -30,3 +30,10 @@ def get_thumb_from_cache(**kwargs):
 def have_cache_for_kwargs(**kwargs):
     """Return if the cache exists for this url"""
     return os.path.exists(get_thumb_path_for_kwargs(**kwargs))
+
+def get_last_modified(**kwargs):
+    """Return the timestamp of the cache file"""
+    if have_cache_for_kwargs(**kwargs):
+        cache_file_path = get_thumb_path_for_kwargs(**kwargs)
+        return os.path.getmtime(cache_file_path)
+    return None

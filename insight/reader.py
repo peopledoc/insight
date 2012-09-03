@@ -44,7 +44,7 @@ def get_file_for_normal_url(url):
     cache_file_path = get_input_path_for_url(url)
     if os.path.exists(cache_file_path):       
         hash_id_m_time = os.path.getmtime(cache_file_path)
-        headers = {'If-Modified-Since': format_date_time(hash_id_m_time)}        
+        headers = {'If-Modified-Since': format_date_time(hash_id_m_time)}
     
     req = requests.get(url, headers=headers)
 
