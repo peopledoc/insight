@@ -54,7 +54,6 @@ def view(engine):
         if if_modified_since:
             if_modified_since = parse_http_date_safe(if_modified_since)
             last_modified = int(get_last_modified(**params))
-            print last_modified, if_modified_since
             if last_modified <= if_modified_since:
                 response = make_response()
                 response.status_code = 304
