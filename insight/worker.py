@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from redis import StrictRedis
 import json
+import requests
 
 from insight.reader import get_file_for_url
 from insight.engines import documents
@@ -47,9 +48,12 @@ def main():
             print "Processing", extract_parameters
             num_pages = documents.extract_image(file_obj, **extract_parameters)
             file_obj.seek(0)
+            print "Processed", num_pages, "pages"
 
         if 'callback' in params:
             try:
-                requests.post(params['callback'], data=params)
-            except:
+                req = requests.post(params['callback'], data={'num_pages': num_pages})
+                print req.url, num_pages
+            except requests.exceptions.ConnectionError:
+                # For localhost error on production server
                 pass
