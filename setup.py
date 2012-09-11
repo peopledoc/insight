@@ -38,7 +38,6 @@ setup(name=name,
                         'Flask',
                         'redis',
                         'requests',
-                        'gunicorn',
                         'circus',
                        ],
       entry_points={
