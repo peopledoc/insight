@@ -43,6 +43,7 @@ setup(name=name,
       entry_points={
           'console_scripts': [
               'insight = insight.worker:main',
+              'insight_serve_api = insight.api:main',
           ]
       },
       )
