@@ -50,7 +50,7 @@ def main():
             file_obj.seek(0)
             print "Processed", num_pages, "pages"
 
-        if 'callback' in params:
+        if 'callback' in params and params['callback'] is not None:
             try:
                 req = requests.post(params['callback'], data={'num_pages': num_pages})
                 print req.url, num_pages
