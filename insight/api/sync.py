@@ -47,7 +47,8 @@ def view(engine):
 
     # If needed we call the engine
     if not (have_cache_for_kwargs(**params) and is_from_cache):
-        num_pages = INSIGHT_ENGINES[engine](file_obj, **params) or None
+        if params['page'] == 1:
+            num_pages = INSIGHT_ENGINES[engine](file_obj, **params) or None
     elif have_cache_for_kwargs(**params):
         # Handle cache with If-Modified-Since
         if_modified_since = request.headers.get('If-Modified-Since')

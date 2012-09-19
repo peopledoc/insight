@@ -4,6 +4,7 @@ import hashlib
 import settings
 import os
 import pickle
+from time import sleep
 try:
     from collections import OrderedDict
 except ImportError:
@@ -25,7 +26,13 @@ def get_thumb_path_for_kwargs(**kwargs):
 
 def get_thumb_from_cache(**kwargs):
     """Return the thumb file object related to the URL"""
-    return open(get_thumb_path_for_kwargs(**kwargs), 'r')
+    try:
+        fd = open(get_thumb_path_for_kwargs(**kwargs), 'r')
+    except IOError:
+        # We wait until the cache is built
+        sleep(1)
+        return get_thumb_from_cache(**kwargs)
+    return fd
 
 def have_cache_for_kwargs(**kwargs):
     """Return if the cache exists for this url"""

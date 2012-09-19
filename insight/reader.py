@@ -5,6 +5,7 @@ import datetime
 import settings
 import requests
 import os
+from time import sleep
 from wsgiref.handlers import format_date_time
 from tempfile import NamedTemporaryFile
 
@@ -42,7 +43,7 @@ def get_file_for_normal_url(url):
     """Return the file object related to the URL"""
     headers = {}
     cache_file_path = get_input_path_for_url(url)
-    if os.path.exists(cache_file_path):       
+    if os.path.exists(cache_file_path):
         hash_id_m_time = os.path.getmtime(cache_file_path)
         headers = {'If-Modified-Since': format_date_time(hash_id_m_time)}
     
@@ -56,5 +57,9 @@ def get_file_for_normal_url(url):
     else:
         cache = True
 
-    fd = open(cache_file_path, 'rb')
+    try:
+        fd = open(cache_file_path, 'rb')
+    except IOError:
+        sleep(1)
+        return get_file_for_normal_url(url)
     return fd, cache
