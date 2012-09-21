@@ -74,7 +74,7 @@ def view(engine):
     except:
         params['max_previews'] = 20
 
-    params['sizes'] = sizes
+    params['sizes'] = sorted(sizes)
     
     message = json.dumps(params)
     redis.rpush(REDIS_QUEUE_KEY, message)
