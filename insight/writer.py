@@ -26,12 +26,14 @@ def get_thumb_path_for_kwargs(**kwargs):
 
 def get_thumb_from_cache(**kwargs):
     """Return the thumb file object related to the URL"""
+    path = get_thumb_path_for_kwargs(**kwargs)
     try:
-        fd = open(get_thumb_path_for_kwargs(**kwargs), 'r')
+        fd = open(path, 'r')
     except IOError:
         # We wait until the cache is built
-        sleep(1)
-        return get_thumb_from_cache(**kwargs)
+        while not have_cache_for_kwargs(**kwargs):
+            sleep(1)
+        fd = open(path, 'r')
     return fd
 
 def have_cache_for_kwargs(**kwargs):
